@@ -185,6 +185,10 @@
 				Name="Managers"
 				>
 				<File
+					RelativePath=".\WorkerManager.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\WorkerManager.h"
 					>
 				</File>
