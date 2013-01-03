@@ -1,5 +1,5 @@
 Moridin The Bot
 * A StarCraft: BroodWar AI bot;
 
-Implemented:
+Implemented
 * Finite State Machine;
