@@ -1,8 +1,12 @@
 #include "MoridinAIModule.h"
-#include "BWAPI.h"
-#include "BWTA.h"
 
 using namespace BWAPI;
+
+MoridinAIModule::~MoridinAIModule()
+{
+	delete informationManager;
+	delete probeManager;
+}
 
 void MoridinAIModule::onStart()
 {
@@ -11,15 +15,18 @@ void MoridinAIModule::onStart()
 	if (Broodwar->isReplay()) 
 		return;
 
-	// Broodwar->enableFlag(Flag::UserInput);
-	// Broodwar->enableFlag(Flag::CompleteMapInformation);
+	Broodwar->enableFlag(Flag::UserInput);
+	Broodwar->enableFlag(Flag::CompleteMapInformation);
 
 	// Sets the speed of the game to the given number. 
 	// Lower numbers are faster. 0 is the fastest speed Starcraft can handle.
 	// Negative numbers set the default speed;
 	Broodwar->setLocalSpeed(-1);
 
-	workerManager = new WorkerManager();
+	informationManager = new InformationManager();
+	informationManager->analyzeMap();
+
+	probeManager = new ProbeManager();
 
 	return;
 }
@@ -39,7 +46,7 @@ void MoridinAIModule::onFrame()
 	if (Broodwar->isReplay())
 		return;
 
-	workerManager->onFrame();
+	probeManager->onFrame();
 
 	return;
 }
@@ -87,7 +94,7 @@ void MoridinAIModule::onUnitShow(BWAPI::Unit* unit)
 		return;
 
 	if (unit->getType() == UnitTypes::Protoss_Probe)
-		workerManager->addUnit(unit);
+		probeManager->addUnit(unit);
 
 	return;
 }

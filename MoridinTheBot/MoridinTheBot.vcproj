@@ -169,6 +169,14 @@
 				Name="General"
 				>
 				<File
+					RelativePath=".\Common.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Common.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Dll.cpp"
 					>
 				</File>
@@ -185,11 +193,19 @@
 				Name="Managers"
 				>
 				<File
-					RelativePath=".\WorkerManager.cpp"
+					RelativePath=".\InformationManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\WorkerManager.h"
+					RelativePath=".\InformationManager.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ProbeManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ProbeManager.h"
 					>
 				</File>
 			</Filter>

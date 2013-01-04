@@ -1,14 +1,16 @@
 #pragma once
-#include <BWAPI.h>
-#include <BWTA.h>
 
 #include <windows.h>
 
-#include "WorkerManager.h"
+#include "Common.h"
+#include "InformationManager.h"
+#include "ProbeManager.h"
 
 class MoridinAIModule : public BWAPI::AIModule
 {
 public:
+	~MoridinAIModule();
+	
 	virtual void onStart();
 	virtual void onEnd(bool isWinner);
 	virtual void onFrame();
@@ -27,5 +29,4 @@ public:
 	virtual void onSaveGame(std::string gameName);
 
 private:
-	WorkerManager* workerManager;
 };
