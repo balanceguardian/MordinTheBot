@@ -2,15 +2,20 @@
 
 using namespace BWAPI;
 
+MoridinAIModule::MoridinAIModule()
+{
+}
+
 MoridinAIModule::~MoridinAIModule()
 {
 	delete informationManager;
 	delete probeManager;
+	delete productionManager;
 }
 
 void MoridinAIModule::onStart()
 {
-	Broodwar->sendText("Hello world!");
+	Broodwar->sendText("gg hf");
 
 	if (Broodwar->isReplay()) 
 		return;
@@ -26,7 +31,8 @@ void MoridinAIModule::onStart()
 	informationManager = new InformationManager();
 	informationManager->analyzeMap();
 
-	probeManager = new ProbeManager();
+	probeManager		= new ProbeManager();
+	productionManager	= new ProductionManager();
 
 	return;
 }
@@ -34,9 +40,9 @@ void MoridinAIModule::onStart()
 void MoridinAIModule::onEnd(bool isWinner)
 {
 	if (isWinner)
-		Broodwar->printf("You have just make it to level 10 with your first win !!!\n");
+		Broodwar->printf("You have just make it to level over 9000 with your first win !!!\n");
 	else
-		Broodwar->printf("No problem, you're just level 1 so far!");
+		Broodwar->printf("No problem, you're just level 2 so far!");
 
 	return;
 }
@@ -47,6 +53,7 @@ void MoridinAIModule::onFrame()
 		return;
 
 	probeManager->onFrame();
+	productionManager->onFrame();
 
 	return;
 }
@@ -95,6 +102,8 @@ void MoridinAIModule::onUnitShow(BWAPI::Unit* unit)
 
 	if (unit->getType() == UnitTypes::Protoss_Probe)
 		probeManager->addUnit(unit);
+	else if (unit->getType().isBuilding())
+		productionManager->onBuildingShow(unit);
 
 	return;
 }

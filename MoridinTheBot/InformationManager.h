@@ -10,8 +10,9 @@ class InformationManager
 public:
 	InformationManager();
 	~InformationManager();
+
 	void analyzeMap();
 
-	bool mapAnalyzed;
+	bool				mapAnalyzed;
 	BWTA::BaseLocation* homeLocation;
 };

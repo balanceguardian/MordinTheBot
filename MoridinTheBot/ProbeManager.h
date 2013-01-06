@@ -22,9 +22,11 @@ public:
 
 	void onFrame();
 	void addUnit(BWAPI::Unit* unit);
+	bool needProbes();
 
 private:
 	BWAPI::Unit* findBestMineral();
+	int			 getNumberOfProbesMining();
 
 	static const int probesPerMineral = 2;
 	static const int probesPerGayser  = 2;
@@ -33,4 +35,5 @@ private:
 	ProbeToTarget								probesTarget;
 	ResourceToProbe								usableMinerals;
 	std::map<BWAPI::Unit*, ProbeManager::State>	probesState;
+	int											numberOfProbesMining;
 };

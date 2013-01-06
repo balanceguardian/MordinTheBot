@@ -192,22 +192,42 @@
 			<Filter
 				Name="Managers"
 				>
-				<File
-					RelativePath=".\InformationManager.cpp"
+				<Filter
+					Name="Information Manager"
 					>
-				</File>
-				<File
-					RelativePath=".\InformationManager.h"
+					<File
+						RelativePath=".\InformationManager.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\InformationManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Probe Manager"
 					>
-				</File>
-				<File
-					RelativePath=".\ProbeManager.cpp"
+					<File
+						RelativePath=".\ProbeManager.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\ProbeManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Production Manager"
 					>
-				</File>
-				<File
-					RelativePath=".\ProbeManager.h"
-					>
-				</File>
+					<File
+						RelativePath=".\ProductionManager.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\ProductionManager.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="FSM"

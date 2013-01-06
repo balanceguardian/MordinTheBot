@@ -8,6 +8,7 @@ std::ofstream fileLog("bwapi-data//AI//log", std::ios::out);
 using namespace BWAPI;
 
 ProbeManager::ProbeManager()
+	: numberOfProbesMining(0)
 {
 	probeUnits.clear();
 	probesState.clear();
@@ -18,8 +19,6 @@ ProbeManager::ProbeManager()
 	UnitSet baseMinerals = BWTA::getStartLocation(Broodwar->self())->getMinerals();
 	for (UnitSet::iterator it = baseMinerals.begin(); it != baseMinerals.end(); ++it)
 		usableMinerals[(*it)] = 0;
-
-	Broodwar->printf("UsableMinerals: %d\n", usableMinerals.size());
 }
 
 ProbeManager::~ProbeManager()
@@ -57,8 +56,11 @@ void ProbeManager::onFrame()
 /** Add a new probe to the set of probes. */
 void ProbeManager::addUnit(Unit* newProbe)
 {
+	Broodwar->printf("Probe shown %d\n", newProbe->getID());
+	// Check the new probe
 	probeUnits.insert(newProbe);
 	probesState[newProbe] = Gathering_Minerals;
+	++numberOfProbesMining;
 	
 	// Assign a mineral to the probe;
 	Unit* bestMineral = findBestMineral();
@@ -69,6 +71,17 @@ void ProbeManager::addUnit(Unit* newProbe)
 	++usableMinerals[bestMineral];
 
 	return;
+}
+
+/** Returns true if the limit of workers per mineral patch
+  * is not reached. */
+bool ProbeManager::needProbes()
+{
+	int probesMining = getNumberOfProbesMining();
+
+	if ((int)usableMinerals.size() * probesPerMineral > probesMining)
+		return true;
+	return false;
 }
 
 /** Find the mineral with lowest number of attached probes. */
@@ -85,4 +98,10 @@ Unit* ProbeManager::findBestMineral()
 		}
 
 	return bestMineral;
+}
+
+/** Returns the number of probes mining. */
+int ProbeManager::getNumberOfProbesMining()
+{
+	return numberOfProbesMining;
 }

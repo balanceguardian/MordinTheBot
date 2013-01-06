@@ -5,10 +5,12 @@
 #include "Common.h"
 #include "InformationManager.h"
 #include "ProbeManager.h"
+#include "ProductionManager.h"
 
 class MoridinAIModule : public BWAPI::AIModule
 {
 public:
+	MoridinAIModule();
 	~MoridinAIModule();
 	
 	virtual void onStart();
@@ -27,6 +29,8 @@ public:
 	virtual void onUnitMorph(BWAPI::Unit* unit);
 	virtual void onUnitRenegade(BWAPI::Unit* unit);
 	virtual void onSaveGame(std::string gameName);
+
+	ProductionManager* productionManager;
 
 private:
 };

@@ -9,5 +9,5 @@ typedef std::set<BWAPI::Unit*> UnitSet;
 class InformationManager;
 class ProbeManager;
 
-extern InformationManager* informationManager;
-extern ProbeManager* probeManager;
+extern InformationManager*	informationManager;
+extern ProbeManager*		probeManager;
