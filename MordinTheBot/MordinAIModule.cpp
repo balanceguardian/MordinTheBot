@@ -1,19 +1,19 @@
-#include "MoridinAIModule.h"
+#include "MordinAIModule.h"
 
 using namespace BWAPI;
 
-MoridinAIModule::MoridinAIModule()
+MordinAIModule::MordinAIModule()
 {
 }
 
-MoridinAIModule::~MoridinAIModule()
+MordinAIModule::~MordinAIModule()
 {
 	delete informationManager;
 	delete probeManager;
 	delete productionManager;
 }
 
-void MoridinAIModule::onStart()
+void MordinAIModule::onStart()
 {
 	Broodwar->sendText("gg hf");
 
@@ -37,7 +37,7 @@ void MoridinAIModule::onStart()
 	return;
 }
 
-void MoridinAIModule::onEnd(bool isWinner)
+void MordinAIModule::onEnd(bool isWinner)
 {
 	if (isWinner)
 		Broodwar->printf("You have just make it to level over 9000 with your first win !!!\n");
@@ -47,7 +47,7 @@ void MoridinAIModule::onEnd(bool isWinner)
 	return;
 }
 
-void MoridinAIModule::onFrame()
+void MordinAIModule::onFrame()
 {
 	if (Broodwar->isReplay())
 		return;
@@ -58,82 +58,95 @@ void MoridinAIModule::onFrame()
 	return;
 }
 
-void MoridinAIModule::onSendText(std::string text)
+void MordinAIModule::onSendText(std::string text)
 {
-    Broodwar->printf("You typed '%s'!", text.c_str());
-    Broodwar->sendText("%s", text.c_str());
+	if (text == "speed on")
+		Broodwar->setLocalSpeed(0);
+	else if (text == "speed off")
+		Broodwar->setLocalSpeed(-1);
+	else
+	{
+		Broodwar->printf("You typed '%s'!", text.c_str());
+		Broodwar->sendText("%s", text.c_str());
+	}
 
 	return;
 }
 
-void MoridinAIModule::onReceiveText(BWAPI::Player* player, std::string text)
+void MordinAIModule::onReceiveText(BWAPI::Player* player, std::string text)
 {
 	Broodwar->printf("%s said '%s'", player->getName().c_str(), text.c_str());
 
 	return;
 }
 
-void MoridinAIModule::onPlayerLeft(BWAPI::Player* player)
+void MordinAIModule::onPlayerLeft(BWAPI::Player* player)
 {
 	Broodwar->sendText("%s left the game.", player->getName().c_str());
 
 	return;
 }
 
-void MoridinAIModule::onNukeDetect(BWAPI::Position target)
+void MordinAIModule::onNukeDetect(BWAPI::Position target)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitDiscover(BWAPI::Unit* unit)
+void MordinAIModule::onUnitDiscover(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitEvade(BWAPI::Unit* unit)
+void MordinAIModule::onUnitEvade(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitShow(BWAPI::Unit* unit)
+void MordinAIModule::onUnitShow(BWAPI::Unit* unit)
 {
 	if (Broodwar->self() != unit->getPlayer())
 		return;
 
 	if (unit->getType() == UnitTypes::Protoss_Probe)
-		probeManager->addUnit(unit);
+		probeManager->onProbeShow(unit);
 	else if (unit->getType().isBuilding())
 		productionManager->onBuildingShow(unit);
 
 	return;
 }
 
-void MoridinAIModule::onUnitHide(BWAPI::Unit* unit)
+void MordinAIModule::onUnitHide(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitCreate(BWAPI::Unit* unit)
+void MordinAIModule::onUnitCreate(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitDestroy(BWAPI::Unit* unit)
+void MordinAIModule::onUnitDestroy(BWAPI::Unit* unit)
+{
+	if (Broodwar->self() != unit->getPlayer())
+		return;
+
+	if (unit->getType() == UnitTypes::Protoss_Probe)
+		probeManager->onProbeDestroy(unit);
+
+	return;
+}
+
+void MordinAIModule::onUnitMorph(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitMorph(BWAPI::Unit* unit)
+void MordinAIModule::onUnitRenegade(BWAPI::Unit* unit)
 {
 	return;
 }
 
-void MoridinAIModule::onUnitRenegade(BWAPI::Unit* unit)
-{
-	return;
-}
-
-void MoridinAIModule::onSaveGame(std::string gameName)
+void MordinAIModule::onSaveGame(std::string gameName)
 {
 	return;
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoridinTheBot", "MoridinTheBot\MoridinTheBot.vcproj", "{9A983ACD-3D3E-41CD-9DD4-856589470104}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MordinTheBot", "MordinTheBot\MordinTheBot.vcproj", "{9A983ACD-3D3E-41CD-9DD4-856589470104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

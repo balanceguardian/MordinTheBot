@@ -7,11 +7,11 @@
 #include "ProbeManager.h"
 #include "ProductionManager.h"
 
-class MoridinAIModule : public BWAPI::AIModule
+class MordinAIModule : public BWAPI::AIModule
 {
 public:
-	MoridinAIModule();
-	~MoridinAIModule();
+	MordinAIModule();
+	~MordinAIModule();
 	
 	virtual void onStart();
 	virtual void onEnd(bool isWinner);

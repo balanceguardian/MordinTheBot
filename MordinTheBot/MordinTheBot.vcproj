@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="MoridinTheBot"
+	Name="MordinTheBot"
 	ProjectGUID="{9A983ACD-3D3E-41CD-9DD4-856589470104}"
 	RootNamespace="MoridinTheBot"
 	TargetFrameworkVersion="196613"
@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Moridin The Bot\MoridinTheBot\include&quot;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -57,6 +58,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="../lib/BWAPI.lib ../lib/BWTA.lib ../lib/tinyxml.lib ../lib/CGAL-vc90-mt.lib ../lib/libboost_thread-vc90-mt-1_40.lib ../lib/gmp-vc90-mt.lib ../lib/mpfr-vc90-mt.lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -181,11 +183,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\MoridinAIModule.cpp"
+					RelativePath=".\MordinAIModule.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\MoridinAIModule.h"
+					RelativePath=".\MordinAIModule.h"
 					>
 				</File>
 			</Filter>

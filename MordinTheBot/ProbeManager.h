@@ -21,7 +21,8 @@ public:
 	~ProbeManager();
 
 	void onFrame();
-	void addUnit(BWAPI::Unit* unit);
+	void onProbeShow(BWAPI::Unit* unit);
+	void onProbeDestroy(BWAPI::Unit* unit);
 	bool needProbes();
 
 private:

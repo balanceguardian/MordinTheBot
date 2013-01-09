@@ -54,9 +54,8 @@ void ProbeManager::onFrame()
 }
 
 /** Add a new probe to the set of probes. */
-void ProbeManager::addUnit(Unit* newProbe)
+void ProbeManager::onProbeShow(Unit* newProbe)
 {
-	Broodwar->printf("Probe shown %d\n", newProbe->getID());
 	// Check the new probe
 	probeUnits.insert(newProbe);
 	probesState[newProbe] = Gathering_Minerals;
@@ -69,6 +68,22 @@ void ProbeManager::addUnit(Unit* newProbe)
 	// Check the mineral is assigned. The number should be
 	// kept lest than or equal to probesPerMineral;
 	++usableMinerals[bestMineral];
+
+	return;
+}
+
+/** Remove the probe from the set and free the mineral patch. */
+void ProbeManager::onProbeDestroy(Unit* deadProbe)
+{
+	// Remove the probe;
+	probeUnits.erase(deadProbe);
+	probesState.erase(deadProbe);
+	--numberOfProbesMining;
+
+	// Free the probe's mineral patch;
+	Unit* mineralPatch = probesTarget[deadProbe];
+	probesTarget.erase(deadProbe);
+	--usableMinerals[mineralPatch];
 
 	return;
 }
