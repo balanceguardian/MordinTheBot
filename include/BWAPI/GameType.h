@@ -1,19 +1,25 @@
 #pragma once
 #include <string>
 #include <set>
-#include "Type.h"
 namespace BWAPI
 {
-  class GameType : public Type
+  class GameType
   {
     public:
       GameType();
       GameType(int id);
+      GameType(const GameType& other);
+      GameType& operator=(const GameType& other);
+      operator int() const;
+
+      /** Returns the unique ID for this game type. */
+      int getID() const;
 
       /** Returns the name of the game type. For example GameTypes::Melee.getName() will return an
        * std::string object containing "Melee". */
-      const std::string &getName() const;
-      const char *c_str() const;
+      std::string getName() const;
+    private:
+      int id;
   };
   namespace GameTypes
   {
@@ -22,7 +28,7 @@ namespace BWAPI
     GameType getGameType(std::string name);
 
     /** Returns the set of all the GameTypes. */
-    const std::set<GameType>& allGameTypes();
+    std::set<GameType>& allGameTypes();
     void init();
     extern const GameType Melee;
     extern const GameType Free_For_All;

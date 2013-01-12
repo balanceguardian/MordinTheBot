@@ -1,20 +1,28 @@
 #pragma once
 #include <string>
 #include <set>
-#include "Type.h"
+
 #define BWAPI_UNIT_COMMAND_TYPE_COUNT 46
 
 namespace BWAPI
 {
-  class UnitCommandType : public Type
+  class UnitCommandType
   {
-  public:
-    UnitCommandType();
-    UnitCommandType(int id);
-    /** Returns the string corresponding to the UnitCommandType object. For example,
-     * UnitCommandTypes::Set_Rally_Position.getName() returns std::string("Set Rally Position")*/
-    const std::string &getName() const;
-    const char *c_str() const;
+    public:
+      UnitCommandType();
+      UnitCommandType(int id);
+      UnitCommandType(const UnitCommandType& other);
+      UnitCommandType& operator=(const UnitCommandType& other);
+      operator int() const;
+
+      /** Returns a unique ID for this UnitCommandType. */
+      int getID() const;
+
+      /** Returns the string corresponding to the UnitCommandType object. For example,
+       * UnitCommandTypes::Set_Rally_Position.getName() returns std::string("Set Rally Position")*/
+      std::string getName() const;
+    private:
+      int id;
   };
   namespace UnitCommandTypes
   {
@@ -23,7 +31,7 @@ namespace BWAPI
     UnitCommandType getUnitCommandType(std::string name);
 
     /** Returns the set of all the sizes, which are listed below: */
-    const std::set<UnitCommandType>& allUnitCommandTypes();
+    std::set<UnitCommandType>& allUnitCommandTypes();
     void init();
     extern const UnitCommandType Attack_Move;
     extern const UnitCommandType Attack_Unit;

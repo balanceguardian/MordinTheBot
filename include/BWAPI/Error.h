@@ -1,22 +1,29 @@
 #pragma once
 #include <string>
 #include <set>
-#include "Type.h"
+
 namespace BWAPI
 {
   class UnitType;
 
   /** Functions in BWAPI may set an error code. To retrieve the error code, call Game::getLastError. */
-  class Error : public Type
+  class Error
   {
-  public:
-    Error();
-    Error(int id);
+    public:
+      Error();
+      Error(int id);
+      Error(const Error& other);
+      Error& operator=(const Error& other);
+      operator int() const;
 
-    /** Returns the name of the error. For example Errors::Insufficient_Minerals?.toString() will return a
-     * std::string object containing "Insufficient Minerals". */
-    std::string toString() const;
-    const char *c_str() const;
+      /** Returns a unique ID for this error. */
+      int getID() const;
+
+      /** Returns the name of the error. For example Errors::Insufficient_Minerals?.toString() will return a
+       * std::string object containing "Insufficient Minerals". */
+      std::string toString() const;
+    private:
+      int id;
   };
   namespace Errors
   {
@@ -25,7 +32,7 @@ namespace BWAPI
     Error getError(std::string name);
 
     /** The set of all the error codes. */
-    const std::set<Error>& allErrors();
+    std::set<Error>& allErrors();
 
     void init();
 

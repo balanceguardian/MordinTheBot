@@ -20,12 +20,8 @@ namespace BWAPI
 
     int minerals;
     int gas;
-    int gatheredMinerals;
-    int gatheredGas;
-    int repairedMinerals;
-    int repairedGas;
-    int refundedMinerals;
-    int refundedGas;
+    int cumulativeMinerals;
+    int cumulativeGas;
     int supplyTotal[3];
     int supplyUsed[3];
 
@@ -48,9 +44,5 @@ namespace BWAPI
     int totalBuildingScore;
     int totalRazingScore;
     int customScore;
-
-    int   maxUpgradeLevel[61];
-    bool  isResearchAvailable[44];
-    bool  isUnitAvailable[228];
   };
 }

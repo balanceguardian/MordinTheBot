@@ -7,7 +7,6 @@
 #include "UnitCommand.h"
 #include "ForceImpl.h"
 #include "PlayerImpl.h"
-#include "RegionImpl.h"
 #include "UnitImpl.h"
 #include "BulletImpl.h"
 #include <list>
@@ -23,21 +22,20 @@ namespace BWAPI
   class GameImpl : public Game
   {
     private :
-      int addShape(const BWAPIC::Shape &s);
+      int addShape(BWAPIC::Shape &s);
       int addString(const char* text);
       int addText(BWAPIC::Shape &s, const char* text);
-      int addCommand(const BWAPIC::Command &c);
+      int addCommand(BWAPIC::Command &c);
       void clearAll();
 
       GameData* data;
-      std::vector<ForceImpl>  forceVector;
+      std::vector<ForceImpl> forceVector;
       std::vector<PlayerImpl> playerVector;
-      std::vector<UnitImpl>   unitVector;
+      std::vector<UnitImpl> unitVector;
       std::vector<BulletImpl> bulletVector;
-      RegionImpl *regionArray[5000];
 
       std::set<Force*> forces;
-      std::set<Player*> playerSet;
+      std::set<Player*> players;
       std::set<Unit*> accessibleUnits;//all units that are accessible (and definitely alive)
       //notDestroyedUnits - accessibleUnits = all units that may or may not be alive (status unknown)
       std::set<Unit*> minerals;
@@ -51,7 +49,6 @@ namespace BWAPI
       std::set<Unit*> selectedUnits;
       std::set<Unit*> pylons;
       std::set<Unit*> unitsOnTileData[256][256];
-      std::set<Region*> regionsList;
 
       std::set< TilePosition > startLocations;
       std::list< Event > events;
@@ -63,7 +60,6 @@ namespace BWAPI
       std::set<Player*> _enemies;
       std::set<Player*> _observers;
       Error lastError;
-      int textSize;
 
     public :
       Event makeEvent(BWAPIC::Event e);
@@ -74,7 +70,6 @@ namespace BWAPI
       void onMatchEnd();
       void onMatchFrame();
       const GameData* getGameData() const;
-      Unit *_unitFromIndex(int index);
 
       virtual std::set< Force* >& getForces();
       virtual std::set< Player* >& getPlayers();
@@ -95,12 +90,10 @@ namespace BWAPI
       virtual Player* getPlayer(int playerID);
       virtual Unit* getUnit(int unitID);
       virtual Unit* indexToUnit(int unitIndex);
-      virtual Region* getRegion(int regionID);
 
       virtual GameType getGameType();
       virtual int getLatency();
       virtual int getFrameCount();
-      virtual int getReplayFrameCount();
       virtual int getFPS();
       virtual double getAverageFPS();
       virtual BWAPI::Position getMousePosition();
@@ -225,7 +218,7 @@ namespace BWAPI
       virtual bool isDebug();
       virtual bool isLatComEnabled();
       virtual void setLatCom(bool isEnabled);
-      virtual bool isGUIEnabled();
+      virtual int  getReplayFrameCount();
       virtual void setGUI(bool enabled = true);
       virtual int  getInstanceNumber();
       virtual int  getAPM(bool includeSelects = false);
@@ -236,12 +229,5 @@ namespace BWAPI
       virtual bool setVision(BWAPI::Player *player, bool enabled = true);
       virtual int  elapsedTime() const;
       virtual void setCommandOptimizationLevel(int level = 2);
-      virtual int  countdownTimer() const;
-      virtual const std::set<BWAPI::Region*> &getAllRegions() const;
-      virtual BWAPI::Region *getRegionAt(int x, int y) const;
-      virtual BWAPI::Region *getRegionAt(BWAPI::Position position) const;
-      virtual int getLastEventTime() const;
-      virtual bool setReplayVision(BWAPI::Player *player, bool enabled = true);
-      virtual bool setRevealAll(bool reveal = true);
   };
 }

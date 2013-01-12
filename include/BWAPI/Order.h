@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <set>
-#include "Type.h"
 namespace BWAPI
 {
   /** To get detailed information about what a unit is doing, you can use the Unit::getOrder method, which
@@ -9,15 +8,22 @@ namespace BWAPI
    * orders ( MoveToMinerals, HarvestMinerals2, MiningMinerals, ReturnMinerals, etc) which will indicate what
    * state the unit is in while executing the command. For information about how to issue commands to units,
    * go to Unit. */
-  class Order : public Type
+  class Order
   {
     public:
       Order();
       Order(int id);
+      Order(const Order& other);
+      Order& operator=(const Order& other);
+      operator int() const;
+
+      /** Returns the unique ID for this order. */
+      int getID() const;
 
       /** Returns the name of this order. */
-      const std::string &getName() const;
-      const char *c_str() const;
+      std::string getName() const;
+    private:
+      int id;
   };
   namespace Orders
   {
@@ -25,7 +31,7 @@ namespace BWAPI
     Order getOrder(std::string name);
 
     /** Returns the set of all the Orders. */
-    const std::set<Order>& allOrders();
+    std::set<Order>& allOrders();
 
     void init();
     extern const Order Die;

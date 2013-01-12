@@ -167,82 +167,314 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
+			<File
+				RelativePath="..\Addons\Assignment.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Dll.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Addons\EnhancedUI.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MordinAIModule.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Addons\Util.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Addons"
+			>
 			<Filter
-				Name="General"
+				Name="Arbitrator"
 				>
 				<File
-					RelativePath=".\Common.cpp"
+					RelativePath="..\include\Arbitrator\Arbitrator.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Common.h"
+					RelativePath="..\include\Arbitrator\Controller.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Dll.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\MordinAIModule.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\MordinAIModule.h"
+					RelativePath="..\include\Heap.h"
 					>
 				</File>
 			</Filter>
 			<Filter
-				Name="Managers"
+				Name="BaseManager"
 				>
-				<Filter
-					Name="Information Manager"
+				<File
+					RelativePath="..\Addons\Base.cpp"
 					>
-					<File
-						RelativePath=".\InformationManager.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\InformationManager.h"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="Probe Manager"
+				</File>
+				<File
+					RelativePath="..\include\BaseManager\Base.h"
 					>
-					<File
-						RelativePath=".\ProbeManager.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\ProbeManager.h"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="Production Manager"
+				</File>
+				<File
+					RelativePath="..\Addons\BaseManager.cpp"
 					>
-					<File
-						RelativePath=".\ProductionManager.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\ProductionManager.h"
-						>
-					</File>
-				</Filter>
+				</File>
+				<File
+					RelativePath="..\include\BaseManager\BaseManager.h"
+					>
+				</File>
 			</Filter>
 			<Filter
-				Name="FSM"
+				Name="BorderManager"
 				>
 				<File
-					RelativePath=".\State.h"
+					RelativePath="..\Addons\BorderManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\StateMachine.h"
+					RelativePath="..\include\BorderManager.h"
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="BuildingPlacer"
+				>
+				<File
+					RelativePath="..\Addons\BuildingPlacer.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BuildingPlacer.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BuildManager"
+				>
+				<File
+					RelativePath="..\Addons\BuildManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BuildManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BuildOrderManager"
+				>
+				<File
+					RelativePath="..\Addons\BuildOrderManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BuildOrderManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Addons\MetaUnit.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BuildOrderManager\TechItem.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Addons\UnitItem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BuildOrderManager\UnitItem.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BWTA"
+				>
+				<File
+					RelativePath="..\include\BWTA\BaseLocation.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BWTA\Chokepoint.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BWTA\Polygon.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BWTA\RectangleArray.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\BWTA\Region.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="ConstructionManager"
+				>
+				<File
+					RelativePath="..\Addons\ConstructionManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\ConstructionManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="DefenseManager"
+				>
+				<File
+					RelativePath="..\Addons\DefenseManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\DefenseManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="InformationManager"
+				>
+				<File
+					RelativePath="..\Addons\InformationManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\InformationManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="MorphManager"
+				>
+				<File
+					RelativePath="..\Addons\MorphManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\MorphManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="ProductionManager"
+				>
+				<File
+					RelativePath="..\Addons\ProductionManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\ProductionManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="ScoutManager"
+				>
+				<File
+					RelativePath="..\Addons\ScoutManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\ScoutManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="SupplyManager"
+				>
+				<File
+					RelativePath="..\Addons\SupplyManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\SupplyManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="TechManager"
+				>
+				<File
+					RelativePath="..\Addons\TechManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\TechManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="UnitGroupManager"
+				>
+				<File
+					RelativePath="..\Addons\UnitGroup.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\UnitGroup.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Addons\UnitGroupManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\UnitGroupManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="UpgradeManager"
+				>
+				<File
+					RelativePath="..\Addons\UpgradeManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\UpgradeManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="WorkerManager"
+				>
+				<File
+					RelativePath="..\Addons\WorkerManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\WorkerManager.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="Header"
+			>
+			<File
+				RelativePath="..\include\EnhancedUI.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MordinAIModule.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\RectangleArray.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Addons\Util.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

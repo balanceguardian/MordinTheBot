@@ -20,7 +20,6 @@
 #include <BWAPI/PlayerType.h>
 #include <BWAPI/Position.h>
 #include <BWAPI/Race.h>
-#include <BWAPI/Region.h>
 #include <BWAPI/TechType.h>
 #include <BWAPI/TilePosition.h>
 #include <BWAPI/TournamentAction.h>

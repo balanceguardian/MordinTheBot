@@ -1,36 +1,51 @@
 #pragma once
-
-#include <windows.h>
-
-#include "Common.h"
-#include "InformationManager.h"
-#include "ProbeManager.h"
-#include "ProductionManager.h"
-
+#include <BWAPI.h>
+#include <BWTA.h>
+#include <Arbitrator.h>
+#include <WorkerManager.h>
+#include <SupplyManager.h>
+#include <BuildManager.h>
+#include <BuildOrderManager.h>
+#include <TechManager.h>
+#include <UpgradeManager.h>
+#include <BaseManager.h>
+#include <ScoutManager.h>
+#include <DefenseManager.h>
+#include <InformationManager.h>
+#include <BorderManager.h>
+#include <UnitGroupManager.h>
+#include <EnhancedUI.h>
 class MordinAIModule : public BWAPI::AIModule
 {
 public:
-	MordinAIModule();
-	~MordinAIModule();
-	
-	virtual void onStart();
-	virtual void onEnd(bool isWinner);
-	virtual void onFrame();
-	virtual void onSendText(std::string text);
-	virtual void onReceiveText(BWAPI::Player* player, std::string text);
-	virtual void onPlayerLeft(BWAPI::Player* player);
-	virtual void onNukeDetect(BWAPI::Position target);
-	virtual void onUnitDiscover(BWAPI::Unit* unit);
-	virtual void onUnitEvade(BWAPI::Unit* unit);
-	virtual void onUnitShow(BWAPI::Unit* unit);
-	virtual void onUnitHide(BWAPI::Unit* unit);
-	virtual void onUnitCreate(BWAPI::Unit* unit);
-	virtual void onUnitDestroy(BWAPI::Unit* unit);
-	virtual void onUnitMorph(BWAPI::Unit* unit);
-	virtual void onUnitRenegade(BWAPI::Unit* unit);
-	virtual void onSaveGame(std::string gameName);
-
-	ProductionManager* productionManager;
-
-private:
+  virtual void onStart();
+  virtual void onEnd(bool isWinner);
+  virtual void onFrame();
+  virtual void onUnitDiscover(BWAPI::Unit* unit);
+  virtual void onUnitEvade(BWAPI::Unit* unit);
+  virtual void onUnitMorph(BWAPI::Unit* unit);
+  virtual void onUnitRenegade(BWAPI::Unit* unit);
+  virtual void onUnitDestroy(BWAPI::Unit* unit);
+  virtual void onSendText(std::string text);
+  ~MordinAIModule(); //not part of BWAPI::AIModule
+  void showStats(); //not part of BWAPI::AIModule
+  void showPlayers();
+  void showForces();
+  bool analyzed;
+  std::map<BWAPI::Unit*,BWAPI::UnitType> buildings;
+  Arbitrator::Arbitrator<BWAPI::Unit*,double> arbitrator;
+  WorkerManager* workerManager;
+  SupplyManager* supplyManager;
+  BuildManager* buildManager;
+  TechManager* techManager;
+  UpgradeManager* upgradeManager;
+  BaseManager* baseManager;
+  ScoutManager* scoutManager;
+  BuildOrderManager* buildOrderManager;
+  DefenseManager* defenseManager;
+  InformationManager* informationManager;
+  BorderManager* borderManager;
+  UnitGroupManager* unitGroupManager;
+  EnhancedUI* enhancedUI;
+  bool showManagerAssignments;
 };

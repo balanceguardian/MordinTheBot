@@ -1,18 +1,24 @@
 #pragma once
 #include <string>
 #include <set>
-#include "Type.h"
 namespace BWAPI
 {
-  class ExplosionType : public Type
+  class ExplosionType
   {
     public:
       ExplosionType();
       ExplosionType(int id);
+      ExplosionType(const ExplosionType& other);
+      ExplosionType& operator=(const ExplosionType& other);
+      operator int() const;
+
+      /** Returns a unique ID for this explosion type. */
+      int getID() const;
 
       /** Returns the name of this explosion type. */
-      const std::string &getName() const;
-      const char *c_str() const;
+      std::string getName() const;
+    private:
+      int id;
   };
   namespace ExplosionTypes
   {
@@ -20,7 +26,7 @@ namespace BWAPI
     ExplosionType getExplosionType(std::string name);
 
     /** Returns the set of all ExplosionTypes. */
-    const std::set<ExplosionType>& allExplosionTypes();
+    std::set<ExplosionType>& allExplosionTypes();
 
     void init();
     extern const ExplosionType None;

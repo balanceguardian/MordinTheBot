@@ -7,7 +7,6 @@
 #include <BWAPI/Client/ForceImpl.h>
 #include <BWAPI/Client/GameData.h>
 #include <BWAPI/Client/GameImpl.h>
-#include <BWAPI/Client/GameTable.h>
 #include <BWAPI/Client/PlayerData.h>
 #include <BWAPI/Client/PlayerImpl.h>
 #include <BWAPI/Client/Shape.h>
