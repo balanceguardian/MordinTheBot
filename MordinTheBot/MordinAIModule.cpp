@@ -298,5 +298,7 @@ void MordinAIModule::onSendText(std::string text)
         Broodwar->printf("You typed '%s'!",text.c_str());
     }
   }
+
+
   Broodwar->sendText("%s",text.c_str());
 }
